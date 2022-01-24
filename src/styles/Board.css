@@ -1,0 +1,17 @@
+.board {
+    background-color: lightslategrey;
+    height: 500px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screen_user-input {
+    background-color: black;
+    color: whitesmoke;
+    border-style: none;
+    height: 75px;
+    width: 300px;
+    margin-top: 20px;
+}

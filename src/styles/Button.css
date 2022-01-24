@@ -1,0 +1,15 @@
+.button {
+    width: 75px;
+    height: 75px;
+    background-color: darkslategrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.board_button-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 14px;
+}
