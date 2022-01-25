@@ -8,18 +8,9 @@ interface Props {
 }
 
 const Button: React.FC<Props> = (prop: Props) => {
-    const error = (): void => {
-        if(prop.userInput.length >= 5) {
-            prop.setInput('WHY');
-            return;
-        }
-    }
 
     const handleClick = (e: React.MouseEvent) => {
-        if (prop.userInput === 'ERROR') {
-        }
         const clicked = e.target as Element;
-        console.log(prop.userInput.split(' '));
         prop.setInput(prop.userInput + clicked.innerHTML);
     }
 

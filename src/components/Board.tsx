@@ -8,25 +8,10 @@ export const Board: React.FC = () => {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '.'];
     const [input, setInput] = useState<string>('');
 
-    const calculate = (arr: string[]): void => {
-        const number1 = parseFloat(arr[0]);
-        const number2 = parseFloat(arr[2]);
-        const answer = (number1 + number2).toString();
-        if(answer === 'NaN') {
-            setInput('ERROR');
-        }
-        setInput(answer);
-    }   
-
     const math = (e: React.MouseEvent) => {
         const clicked = e.target as Element;
-        const expression = input.split(' ');
         switch (clicked.id) {
             case "plus": {
-                if (expression.length  === 3) {
-                    calculate(expression);
-                    return;
-                }
                 setInput(input + ' + ');
                 break;
             }
@@ -47,15 +32,17 @@ export const Board: React.FC = () => {
                 break;
             }
             case "equalSign": {
-                const expression = input.split(' ');
-                const number1 = parseFloat(expression[0]);
-                const number2 = parseFloat(expression[2]);
-                const answer = (number1 + number2).toString();
-                if(answer === 'NaN') {
-                    setInput('ERROR');
-                    break;
-                }
+                const answer = eval(input);
                 setInput(answer);
+
+                // const number1 = parseFloat(expression[0]);
+                // const number2 = parseFloat(expression[2]);
+                // let answer = number1 + number2;
+                // if(answer.toString() === 'NaN') {
+                //     setInput('ERROR');
+                //     break;
+                // }
+                // setInput(answer.toString());
                 break;
             }
             case "clear": {
@@ -63,12 +50,12 @@ export const Board: React.FC = () => {
             }
         }
     }
-
+    
     return (
         <div>
             <div className="board">
                 <div className="board_screen">
-                    <input readOnly className="screen_user-input" value={input} onChange={() => console.log('is it working')} />
+                    <input readOnly className="screen_user-input" value={input} onChange={() => console.log('')} />
                 </div>
                 <div className="board_container">
                     <div className="board_number-container">
@@ -101,3 +88,25 @@ export const Board: React.FC = () => {
         </div>
     )
 }
+    // switch(expression[1]) {
+    //     case '+': {
+    //         answer = (number2 + number2).toString();
+    //         setInput(answer);
+    //         break;
+    //     }
+    //     case '-': {
+    //         answer = (number2 - number2).toString();
+    //         setInput(answer);
+    //         break;
+    //     }
+    //     case '*': {
+    //         answer = (number2 * number2).toString();
+    //         setInput(answer);
+    //         break;
+    //     }
+    //     case '/': {
+    //         answer = (number2 / number2).toString();
+    //         setInput(answer);
+    //         break;
+    //     }
+    // }
