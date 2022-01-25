@@ -1,3 +1,19 @@
+.clear-button {
+    color: white;
+    background-color: darkslategray;
+    border-style: none;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+    margin: 10px;
+    border-radius: 60px;
+    box-shadow: 3px 3px 6px black;
+}
+
+.clear-button:active {
+    box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
+}
+
 .button {
     width: 60px;
     height: 60px;
@@ -6,6 +22,7 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
+    border-radius: 5px;
 }
 
 .board_number-container {
@@ -21,4 +38,11 @@
     font-size: 20px;
     height: 60px;
     width: 60px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 6px black;
+}
+
+.number-button:active {
+    box-shadow: inset 2px 2px 2px rgb(0, 0, 0);
+
 }

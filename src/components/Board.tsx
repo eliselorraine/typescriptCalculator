@@ -98,7 +98,7 @@ export const Board: React.FC = () => {
                 </div>
                 <div className="board_container">
                     <div className="board_number-container">
-                        <button id="clear" className="clear-button number-button" onClick={math}>
+                        <button id="clear" className="clear-button" onClick={math}>
                             AC
                         </button>
                         {numbers.map(element => {
