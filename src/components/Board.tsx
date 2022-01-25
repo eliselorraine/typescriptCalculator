@@ -7,17 +7,59 @@ import { FaDivide, FaMinus, FaTimes, FaPlus, FaEquals } from 'react-icons/fa';
 export const Board: React.FC = () => {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '.'];
     const [input, setInput] = useState<string>('');
+    const [operator, setOperator] = useState<string>('');
+
+    const calc = (op: string): number | string => {
+        const expression = input.split(' ');
+        const a = parseFloat(expression[0]);
+        const b = parseFloat(expression[2]);
+        let answer: number | string = 'ERROR';
+        switch (op) {
+            case '+': {
+                if(isNaN(a + b)) {
+                    return answer;
+                }
+                answer = a + b;
+                break;
+            }
+            case '-': {
+                if(isNaN(a - b)) {
+                    return answer;
+                }
+                answer = a - b;
+                break;
+            }
+            case '*': {
+                if(isNaN(a * b)) {
+                    return answer;
+                }
+                answer = a * b;
+                break;
+            }
+            case '/': {
+                if(isNaN(a / b)) {
+                    return answer;
+                }
+                answer = a / b;
+                break;
+            } 
+            
+        }
+        return answer;
+    }
 
     const math = (e: React.MouseEvent) => {
         const clicked = e.target as Element;
         switch (clicked.id) {
             case "plus": {
                 setInput(input + ' + ');
+                setOperator('+');
                 break;
             }
             case "subtract": {
                 if(input.length > 0) {
                     setInput(input + ' - ');
+                    setOperator('-');
                 } else {
                     setInput('-');
                 }
@@ -25,24 +67,17 @@ export const Board: React.FC = () => {
             }
             case "multiply": {
                 setInput(input + ' * ');
+                setOperator('*');
                 break;
             }
             case "divide": {
                 setInput(input + ' / ');
+                setOperator('/');
                 break;
             }
             case "equalSign": {
-                const answer = eval(input);
-                setInput(answer);
-
-                // const number1 = parseFloat(expression[0]);
-                // const number2 = parseFloat(expression[2]);
-                // let answer = number1 + number2;
-                // if(answer.toString() === 'NaN') {
-                //     setInput('ERROR');
-                //     break;
-                // }
-                // setInput(answer.toString());
+                const answer = calc(operator);
+                setInput(input + ' = ' + answer);
                 break;
             }
             case "clear": {
@@ -63,7 +98,11 @@ export const Board: React.FC = () => {
                             AC
                         </button>
                         {numbers.map(element => {
-                            return <Button num={element} userInput={input} setInput={setInput} key={Math.floor(Math.random() * 100000)} />
+                            return <Button 
+                            num={element} 
+                            userInput={input} 
+                            setInput={setInput} 
+                            key={Math.floor(Math.random() * 100000)} />
                         })}
                     </div>
                     <div className="board_operator-container">

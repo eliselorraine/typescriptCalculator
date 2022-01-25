@@ -8,15 +8,24 @@ interface Props {
 }
 
 const Button: React.FC<Props> = (prop: Props) => {
-
+    
     const handleClick = (e: React.MouseEvent) => {
         const clicked = e.target as Element;
         prop.setInput(prop.userInput + clicked.innerHTML);
     }
 
+    const reset = (event: React.MouseEvent): void => {
+        const regex = /= /gm
+        if (regex.test(prop.userInput)) {
+            prop.setInput('');
+            return;
+        }
+        handleClick(event);
+    }
+
     return (
         <div className="button">
-            <button onClick={handleClick} className="number-button">
+            <button onClick={reset} className="number-button">
                 {prop.num}
             </button>
         </div>
