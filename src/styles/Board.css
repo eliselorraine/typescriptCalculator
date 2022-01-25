@@ -13,14 +13,17 @@
     color: whitesmoke;
     border-style: none;
     height: 75px;
-    width: 300px;
+    width: 280px;
     margin-top: 20px;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 20px;
 }
 
 .board_container {
     display: flex;
-    margin: 10px;
-
+    align-items: center;
+    margin-top: 10px;
 }
 
 .board_operator-container {
@@ -36,4 +39,10 @@
     width: 50px;
     margin: 10px;
     border-style: none;
+}
+
+.clear-button {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
 }

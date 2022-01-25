@@ -13,3 +13,12 @@
     flex-wrap: wrap;
     width: 250px;
 }
+
+.number-button {
+    color: white;
+    background-color: darkslategray;
+    border-style: none;
+    font-size: 20px;
+    height: 60px;
+    width: 60px;
+}
