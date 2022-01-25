@@ -50,6 +50,9 @@ export const Board: React.FC = () => {
 
     const math = (e: React.MouseEvent) => {
         const clicked = e.target as Element;
+        if(operator !== '' && 
+           clicked.id !== "equalSign" &&
+           clicked.id !== "clear") return;
         switch (clicked.id) {
             case "plus": {
                 setInput(input + ' + ');
@@ -82,6 +85,7 @@ export const Board: React.FC = () => {
             }
             case "clear": {
                 setInput('');
+                setOperator('');
             }
         }
     }
